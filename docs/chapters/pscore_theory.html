@@ -492,13 +492,13 @@ Note&nbsp;2.2: Balance and Propensity Scores
 <li><p><strong>Simplified Data Exploration</strong>: By exploring complex data structures in a data-driven way, probability machines simplify model specification. For instance, tree-based models remain unaffected by adding squared or interaction terms, streamlining the modeling process.</p></li>
 </ol>
 <p>In causal inference, probability machines can predict better calibrated propensity scores and better estimate treatment effects. This discussion aims to clarify the use of probability machines in causal inference given the unique requirements of propensity score specification. Probability machines are theoretically complex and there are unanswered questions in this space.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="A Particularly Important Method: Classification and Regression Trees">
+<div id="nte-cart" class="callout callout-style-default callout-note callout-titled" title="A Particularly Important Method: Classification and Regression Trees">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A Particularly Important Method: Classification and Regression Trees
+Note&nbsp;2.3: A Particularly Important Method: Classification and Regression Trees
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -520,7 +520,7 @@ A Particularly Important Method: Classification and Regression Trees
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note&nbsp;2.3: A Quick Note on Ensemble Learning
+Note&nbsp;2.4: A Quick Note on Ensemble Learning
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -543,7 +543,7 @@ Note&nbsp;2.3: A Quick Note on Ensemble Learning
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note&nbsp;2.4: Class Imbalance and Machine Learning
+Note&nbsp;2.5: Class Imbalance and Machine Learning
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -786,7 +786,7 @@ Figure&nbsp;2.3: Density estimates of the propensity scores for control and part
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note&nbsp;2.5: Overfitting in Logistic Regression
+Note&nbsp;2.6: Overfitting in Logistic Regression
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1458,7 +1458,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a>In causal inference, probability machines can predict better calibrated propensity scores and better estimate treatment effects. This discussion aims to clarify the use of probability machines in causal inference given the unique requirements of propensity score specification. Probability machines are theoretically complex and there are unanswered questions in this space.</span>
 <span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="A Particularly Important Method: Classification and Regression Trees"}</span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>::: {#nte-cart .callout-note title="A Particularly Important Method: Classification and Regression Trees"}</span>
 <span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a>Moving forward, a particularly important model is the Classification and Regression Trees. @Breiman1984 introduces method, commonly known as CART, that partitions data according to a splitting criterion, resulting in an "if this, then that" interpretation. CART models are also widely known as a decision trees. The splits are recursive, meaning splits are applied upon previous splits, such as trees breaking into branches and then leaves. The splits are also *greedy* as each potential split only considers information available at that split instead of past or future splits. Each parent node is split to create two child nodes and the final nodes of a CART model are called terminal nodes.  </span>
 <span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a>For example, when classifying pets into cats versus dogs, the first split might be*"if barks"* and the second is *"heavier than 5 kg"*.  The tree says *If it barks and is heavier than 5 kg, then it is a dog*.</span>
