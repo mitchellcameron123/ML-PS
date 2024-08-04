@@ -95,6 +95,9 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -470,7 +473,7 @@ Note&nbsp;2.2: Balance and Propensity Scores
 <section id="sec-assessing-balance" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="sec-assessing-balance"><span class="header-section-number">2.1.1</span> Assessing balance</h3>
 <p>Balance assessment is an important step to ensure that conditioning on the propensity score has been successful. A commonly recommended measure of covariate balance is the standardized mean difference or SMD. This is the difference in the mean of each covariate between treatment groups standardized by a standardization factor so that it is on the same scale for all covariates.</p>
-<p>SMDs close to zero indicate good balance. <span class="citation" data-cites="Austin2011">P. Austin (<a href="references.html#ref-Austin2011" role="doc-biblioref">2011</a>)</span> notes that <span class="math inline">\(0.1\)</span> is a common “threshold” for determining if a variable is balanced. This threshold is a guideline to the approximate region that indicates a covariate is balanced and should not be interpreted as a binary rule.</p>
+<p>SMDs close to zero indicate good balance. <span class="citation" data-cites="Austin2011">P. Austin (<a href="references.html#ref-Austin2011" role="doc-biblioref">2011</a>)</span> notes that <span class="math inline">\(0.1\)</span> is a common <em>threshold</em> for determining if a variable is balanced. This threshold is a guideline to the approximate region that indicates a covariate is balanced and should not be interpreted as a binary rule.</p>
 </section>
 <section id="propensity-score-modelling-with-logistic-regression" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="propensity-score-modelling-with-logistic-regression"><span class="header-section-number">2.1.2</span> Propensity Score Modelling with Logistic Regression</h3>
@@ -632,7 +635,7 @@ Attaching package: 'ggplot2'</code></pre>
 <div id="fig-rf-theory-demo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rf-theory-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pscore_theory_files/figure-html/fig-rf-theory-demo-1.png" class="img-fluid figure-img" width="672">
+<a href="pscore_theory_files/figure-html/fig-rf-theory-demo-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;2.1: Compares the density estimates of the propensity scores for control and participant groups in the National Supported Work programme. randomForest() fits a random forest with mtry = 1 and bagging ensemble with mtry = 7. The default values of ntree = 500 and nodesize = 1 are used. A logistic regression model is included for a comparison."><img src="pscore_theory_files/figure-html/fig-rf-theory-demo-1.png" class="img-fluid figure-img" width="672"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rf-theory-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.1: Compares the density estimates of the propensity scores for control and participant groups in the National Supported Work programme. <code>randomForest()</code> fits a random forest with <code>mtry = 1</code> and bagging ensemble with <code>mtry = 7</code>. The default values of <code>ntree = 500</code> and <code>nodesize = 1</code> are used. A logistic regression model is included for a comparison.
@@ -690,7 +693,7 @@ Figure&nbsp;2.1: Compares the density estimates of the propensity scores for con
 <div id="fig-rf-varimp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rf-varimp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pscore_theory_files/figure-html/fig-rf-varimp-1.png" class="img-fluid figure-img" width="672">
+<a href="pscore_theory_files/figure-html/fig-rf-varimp-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2.2: Compares the variable importance assigned to each variable from a bagging ensemble fitted on data from the National Supported Work programme. randomForest() fits a baggin ensemble with mtry = 7 with default ntree = 500 and nodesize = 1."><img src="pscore_theory_files/figure-html/fig-rf-varimp-1.png" class="img-fluid figure-img" width="672"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rf-varimp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.2: Compares the variable importance assigned to each variable from a bagging ensemble fitted on data from the National Supported Work programme. <code>randomForest()</code> fits a baggin ensemble with <code>mtry = 7</code> with default <code>ntree = 500</code> and <code>nodesize = 1</code>.
@@ -749,7 +752,7 @@ f_T(x_i) = b_1(x_i) + \lambda \sum_{t=1}^{T} b_t(x_i).
 </div>
 <details class="code-fold">
 <summary>Show the Code to Create <a href="fig-gbm-demo">Figure 2.3</a></summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_pmachines</span>(boosted_preds, <span class="st">"Gradient Boosting Machine with `gbm`"</span>) <span class="sc">+</span> </span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_pmachines</span>(boosted_preds, <span class="st">"Gradient Boosting Machine"</span>) <span class="sc">+</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>)) <span class="sc">+</span> </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"curve"</span>, <span class="at">x =</span> <span class="fl">0.6</span>, <span class="at">y =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="fl">0.42</span>, <span class="at">yend =</span> <span class="dv">0</span>, </span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">curvature =</span> .<span class="dv">3</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>))) <span class="sc">+</span></span>
@@ -766,7 +769,7 @@ Adding another scale for y, which will replace the existing scale.</code></pre>
 <div id="fig-gbm-demo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gbm-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pscore_theory_files/figure-html/fig-gbm-demo-1.png" class="img-fluid figure-img" width="672">
+<a href="pscore_theory_files/figure-html/fig-gbm-demo-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;2.3: Density estimates of the propensity scores for control and participant groups in the National Supported Work programme using the gbm package with distribution = &quot;bernoulli&quot;, data = nsw_data, n.trees = 10000, and shrinkage = 0.0001."><img src="pscore_theory_files/figure-html/fig-gbm-demo-1.png" class="img-fluid figure-img" width="672"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gbm-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.3: Density estimates of the propensity scores for control and participant groups in the National Supported Work programme using the <code>gbm</code> package with <code>distribution = "bernoulli"</code>, <code>data = nsw_data</code>, <code>n.trees = 10000</code>, and <code>shrinkage = 0.0001</code>.
@@ -1428,7 +1431,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assessing balance {#sec-assessing-balance}</span></span>
 <span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>Balance assessment is an important step to ensure that conditioning on the propensity score has been successful. A commonly recommended measure of covariate balance is the standardized mean difference or SMD. This is the difference in the mean of each covariate between treatment groups standardized by a standardization factor so that it is on the same scale for all covariates. </span>
 <span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>SMDs close to zero indicate good balance. @Austin2011 notes that $0.1$ is a common "threshold" for determining if a variable is balanced. This threshold is a guideline to the approximate region that indicates a covariate is balanced and should not be interpreted as a binary rule. </span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>SMDs close to zero indicate good balance. @Austin2011 notes that $0.1$ is a common *threshold* for determining if a variable is balanced. This threshold is a guideline to the approximate region that indicates a covariate is balanced and should not be interpreted as a binary rule. </span>
 <span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Propensity Score Modelling with Logistic Regression</span></span>
 <span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a></span>
@@ -1509,7 +1512,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-121"><a href="#cb19-121" aria-hidden="true" tabindex="-1"></a>@fig-rf-theory-demo shows both divergence bias and majority class bias using <span class="in">`randomForest()`</span> to fit both the random forest and bagging ensemble. Recall that a bagging ensemble is a random forest model when $mtry$ is equal to the number of predictors and so specifying <span class="in">`mtry = 7`</span> in the <span class="in">`randomForest()`</span> function fits a bagging ensemble. Additionally, logistic regression using the <span class="in">`gbm()`</span> function provides a meaningful comparison.</span>
 <span id="cb19-122"><a href="#cb19-122" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-123"><a href="#cb19-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{r dev="ragg_png"}</span></span>
+<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
 <span id="cb19-125"><a href="#cb19-125" aria-hidden="true" tabindex="-1"></a><span class="in">#| dev: "ragg_png"</span></span>
 <span id="cb19-126"><a href="#cb19-126" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-height: 8</span></span>
 <span id="cb19-127"><a href="#cb19-127" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-rf-theory-demo</span></span>
@@ -1656,7 +1659,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-272"><a href="#cb19-272" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-273"><a href="#cb19-273" aria-hidden="true" tabindex="-1"></a>boosted_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(nsw_gbm, <span class="at">type =</span> <span class="st">"response"</span>)</span>
 <span id="cb19-274"><a href="#cb19-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-275"><a href="#cb19-275" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_pmachines</span>(boosted_preds, <span class="st">"Gradient Boosting Machine with `gbm`"</span>) <span class="sc">+</span> </span>
+<span id="cb19-275"><a href="#cb19-275" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_pmachines</span>(boosted_preds, <span class="st">"Gradient Boosting Machine"</span>) <span class="sc">+</span> </span>
 <span id="cb19-276"><a href="#cb19-276" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>)) <span class="sc">+</span> </span>
 <span id="cb19-277"><a href="#cb19-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"curve"</span>, <span class="at">x =</span> <span class="fl">0.6</span>, <span class="at">y =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="fl">0.42</span>, <span class="at">yend =</span> <span class="dv">0</span>, </span>
 <span id="cb19-278"><a href="#cb19-278" aria-hidden="true" tabindex="-1"></a>           <span class="at">curvature =</span> .<span class="dv">3</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>))) <span class="sc">+</span></span>
@@ -1721,16 +1724,60 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb19-337"><a href="#cb19-337" aria-hidden="true" tabindex="-1"></a>Short concluding remark</span>
 <span id="cb19-338"><a href="#cb19-338" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-339"><a href="#cb19-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-342"><a href="#cb19-342" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-343"><a href="#cb19-343" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb19-344"><a href="#cb19-344" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"globals.RData"</span>)</span>
+<span id="cb19-340"><a href="#cb19-340" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
+<span id="cb19-341"><a href="#cb19-341" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code Provided for PDF Output</span></span>
+<span id="cb19-342"><a href="#cb19-342" aria-hidden="true" tabindex="-1"></a><span class="in">```{r get-labels, echo = FALSE}</span></span>
+<span id="cb19-343"><a href="#cb19-343" aria-hidden="true" tabindex="-1"></a><span class="in">labs = knitr::all_labels()</span></span>
+<span id="cb19-344"><a href="#cb19-344" aria-hidden="true" tabindex="-1"></a><span class="in">labs = setdiff(labs, c("get-labels"))</span></span>
 <span id="cb19-345"><a href="#cb19-345" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-346"><a href="#cb19-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-347"><a href="#cb19-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r all-code, ref.label=labs, eval=FALSE}</span></span>
+<span id="cb19-348"><a href="#cb19-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-349"><a href="#cb19-349" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-350"><a href="#cb19-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-351"><a href="#cb19-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-354"><a href="#cb19-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-355"><a href="#cb19-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb19-356"><a href="#cb19-356" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"globals.RData"</span>)</span>
+<span id="cb19-357"><a href="#cb19-357" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/pscore_theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/pscore_theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

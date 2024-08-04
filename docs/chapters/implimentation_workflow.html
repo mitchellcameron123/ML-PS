@@ -95,6 +95,9 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -587,11 +590,24 @@ Note&nbsp;3.1: Inverse Probability of Treatment Weighting
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>optimal_boost_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(nsw_boosted_weight2<span class="sc">$</span>info<span class="sc">$</span>tree.val, </span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">aes</span>(<span class="at">x =</span> tree, <span class="at">y =</span> smd.mean)) <span class="sc">+</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#2780e3"</span>) <span class="sc">+</span> </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#2780e3"</span>) <span class="sc">+</span> </span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Optimal Tune"</span>,</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of Iterations"</span>,</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Average Standardised Mean Difference"</span>) <span class="sc">+</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">500</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>lowshrinkage_boost_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(low_shrinkage<span class="sc">$</span>info<span class="sc">$</span>tree.val, </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">aes</span>(<span class="at">x =</span> tree, <span class="at">y =</span> smd.mean)) <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#2780e3"</span>) <span class="sc">+</span> </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Low Learning Rate (shrinkage = 0.05)"</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of Iterations"</span>, </span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"curve"</span>, <span class="at">x =</span> <span class="dv">30000</span>, <span class="at">y =</span> <span class="fl">0.05</span>, </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> low_shrinkage<span class="sc">$</span>info<span class="sc">$</span>best.tree, <span class="at">yend =</span> <span class="fl">0.0231</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>           <span class="at">curvature =</span> <span class="fl">0.3</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>))) <span class="sc">+</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">31000</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">"Minimum"</span>, </span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="st">"left"</span>, <span class="at">color =</span> <span class="st">"#333333"</span>, <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Source Sans Pro"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
@@ -599,21 +615,8 @@ Note&nbsp;3.1: Inverse Probability of Treatment Weighting
 </div>
 <details class="code-fold">
 <summary>Code: Create <a href="fig-balance-iterations">Figure 3.1</a></summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lowshrinkage_boost_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(low_shrinkage<span class="sc">$</span>info<span class="sc">$</span>tree.val, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">aes</span>(<span class="at">x =</span> tree, <span class="at">y =</span> smd.mean)) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#2780e3"</span>) <span class="sc">+</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Low Learning Rate (shrinkage = 0.05)"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of Iterations"</span>, </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"curve"</span>, <span class="at">x =</span> <span class="dv">30000</span>, <span class="at">y =</span> <span class="fl">0.05</span>, </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> low_shrinkage<span class="sc">$</span>info<span class="sc">$</span>best.tree, <span class="at">yend =</span> <span class="fl">0.0231</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">curvature =</span> <span class="fl">0.3</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>))) <span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">31000</span>, <span class="at">y =</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">"Minimum"</span>, </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="st">"left"</span>, <span class="at">color =</span> <span class="st">"#333333"</span>, <span class="at">size =</span> <span class="dv">3</span>, </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Source Sans Pro"</span>)  </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>optimal_boost_plot <span class="sc">+</span> lowshrinkage_boost_plot <span class="sc">+</span> <span class="fu">plot_annotation</span>(</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Number of Tree Iterations and Balance'</span>) <span class="sc">+</span> custom_ggplot_theme</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>optimal_boost_plot <span class="sc">+</span> lowshrinkage_boost_plot <span class="sc">+</span> <span class="fu">plot_annotation</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Number of Tree Iterations and Balance'</span>, <span class="at">theme =</span> custom_ggplot_theme)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2225 rows containing missing values or values outside the scale range
@@ -623,7 +626,7 @@ Note&nbsp;3.1: Inverse Probability of Treatment Weighting
 <div id="fig-balance-iterations" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-balance-iterations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="implimentation_workflow_files/figure-html/fig-balance-iterations-1.png" class="img-fluid figure-img" width="672">
+<a href="implimentation_workflow_files/figure-html/fig-balance-iterations-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;3.1: Relatoinship between standardised mean difference, number of interations, and learning rate in a GBM model. Please note the difference in horozontal scale between the two learning rates. The model is fit using weightit from the WeightIt package."><img src="implimentation_workflow_files/figure-html/fig-balance-iterations-1.png" class="img-fluid figure-img" width="672"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-balance-iterations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.1: Relatoinship between standardised mean difference, number of interations, and learning rate in a GBM model. Please note the difference in horozontal scale between the two learning rates. The model is fit using <code>weightit</code> from the <code>WeightIt</code> package.
@@ -704,9 +707,8 @@ The Importance of Discussing Balance
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">thresholds =</span> <span class="fu">c</span>(<span class="at">mean.diffs =</span> <span class="fl">0.1</span>),</span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">s.d.denom =</span> <span class="st">"treated"</span>)</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracts the balance table and removes unwanted columns. </span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>nsw_boosted_btab <span class="ot">&lt;-</span> nsw_boosted_btab<span class="sc">$</span>Balance[<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>nsw_raw_btab <span class="ot">&lt;-</span> nsw_raw_btab<span class="sc">$</span>Balance[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>nsw_boosted_btab <span class="ot">&lt;-</span> nsw_boosted_btab<span class="sc">$</span>Balance[<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>nsw_raw_btab <span class="ot">&lt;-</span> nsw_raw_btab<span class="sc">$</span>Balance[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -767,8 +769,11 @@ The following object is masked from 'package:dplyr':
 <span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">bold =</span> F, <span class="at">width =</span> <span class="st">"3cm"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="at">index =</span> <span class="fu">rev</span>(<span class="fu">table</span>(combined_btab<span class="sc">$</span>Method)))</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co">#perhaps use the method from the coffe table as this is not as neat as the other method. for mergin that is.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Raw Data"</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="at">label_row_css =</span> <span class="st">"text-align: center;"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Logistic Regression and IPTW"</span>, <span class="dv">8</span>, <span class="dv">14</span>, </span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>             <span class="at">label_row_css =</span> <span class="st">"text-align: center;"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Boosting Machine and IPTW"</span>, <span class="dv">15</span>, <span class="dv">21</span>,</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>             <span class="at">label_row_css =</span> <span class="st">"text-align: center;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="tbl-combined-btab" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -789,7 +794,7 @@ Table&nbsp;3.1: Standardised mean difference (a measure of balance) across diffe
 </thead>
 <tbody>
 <tr class="odd" data-grouplength="7">
-<td colspan="5" style="border-bottom: 1px solid"><strong>Raw Data</strong></td>
+<td colspan="5" style="text-align: center;"><strong>Raw Data</strong></td>
 </tr>
 <tr class="even">
 <td style="text-align: center; font-weight: bold; padding-left: 2em;" data-indentlevel="1">Age</td>
@@ -841,7 +846,7 @@ Table&nbsp;3.1: Standardised mean difference (a measure of balance) across diffe
 <td style="text-align: center; width: 3cm;">NA</td>
 </tr>
 <tr class="odd" data-grouplength="7">
-<td colspan="5" style="border-bottom: 1px solid"><strong>IPTW: Logistic Regression</strong></td>
+<td colspan="5" style="text-align: center;"><strong>Logistic Regression and IPTW</strong></td>
 </tr>
 <tr class="even">
 <td style="text-align: center; font-weight: bold; padding-left: 2em;" data-indentlevel="1">Age</td>
@@ -893,7 +898,7 @@ Table&nbsp;3.1: Standardised mean difference (a measure of balance) across diffe
 <td style="text-align: center; width: 3cm;">NA</td>
 </tr>
 <tr class="odd" data-grouplength="7">
-<td colspan="5" style="border-bottom: 1px solid"><strong>IPTW: Boosting</strong></td>
+<td colspan="5" style="text-align: center;"><strong>Boosting Machine and IPTW</strong></td>
 </tr>
 <tr class="even">
 <td style="text-align: center; font-weight: bold; padding-left: 2em;" data-indentlevel="1">Age</td>
@@ -953,7 +958,6 @@ Table&nbsp;3.1: Standardised mean difference (a measure of balance) across diffe
 </figure>
 </div>
 </div>
-<!-- double check that the variables are in the righ tpalces in the table  -->
 <p><a href="#tbl-combined-btab" class="quarto-xref">Table&nbsp;<span>3.1</span></a> shows that both logistic regression and the GBM have reduced imbalance. The raw data exhibits imbalance across age, years of education, if someone is gispanic, and if someone has a bachelors degree. Imbalanced datasets leads to biased treatment effect estimation so the estimate of the treatment effect in the raw data may be biased. In this example, logistic regression appears to achieve the best covariate balance although GBM achieves slightly better variance ratios.</p>
 <!-- perhaps find the threshold for variance ratios -->
 </section>
@@ -1748,7 +1752,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-198"><a href="#cb16-198" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-199"><a href="#cb16-199" aria-hidden="true" tabindex="-1"></a>optimal_boost_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(nsw_boosted_weight2<span class="sc">$</span>info<span class="sc">$</span>tree.val, </span>
 <span id="cb16-200"><a href="#cb16-200" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">aes</span>(<span class="at">x =</span> tree, <span class="at">y =</span> smd.mean)) <span class="sc">+</span></span>
-<span id="cb16-201"><a href="#cb16-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#2780e3"</span>) <span class="sc">+</span> </span>
+<span id="cb16-201"><a href="#cb16-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#2780e3"</span>) <span class="sc">+</span> </span>
 <span id="cb16-202"><a href="#cb16-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Optimal Tune"</span>,</span>
 <span id="cb16-203"><a href="#cb16-203" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of Iterations"</span>,</span>
 <span id="cb16-204"><a href="#cb16-204" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Average Standardised Mean Difference"</span>) <span class="sc">+</span></span>
@@ -1768,7 +1772,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-218"><a href="#cb16-218" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Source Sans Pro"</span>)  </span>
 <span id="cb16-219"><a href="#cb16-219" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-220"><a href="#cb16-220" aria-hidden="true" tabindex="-1"></a>optimal_boost_plot <span class="sc">+</span> lowshrinkage_boost_plot <span class="sc">+</span> <span class="fu">plot_annotation</span>(</span>
-<span id="cb16-221"><a href="#cb16-221" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Number of Tree Iterations and Balance'</span>) <span class="sc">+</span> custom_ggplot_theme</span>
+<span id="cb16-221"><a href="#cb16-221" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Number of Tree Iterations and Balance'</span>, <span class="at">theme =</span> custom_ggplot_theme)</span>
 <span id="cb16-222"><a href="#cb16-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb16-223"><a href="#cb16-223" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-224"><a href="#cb16-224" aria-hidden="true" tabindex="-1"></a>For the optimal machine fit, finding that balance worsens as the number of trees increases is just as informative as knowing the correct number of trees. Provided sufficient computational performance, a wide grid search is beneficial in the long run to ensure that each model specification reaches the best balance possible.</span>
@@ -1840,127 +1844,158 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb16-292"><a href="#cb16-292" aria-hidden="true" tabindex="-1"></a><span class="in">                        thresholds = c(mean.diffs = 0.1),</span></span>
 <span id="cb16-293"><a href="#cb16-293" aria-hidden="true" tabindex="-1"></a><span class="in">                        s.d.denom = "treated")</span></span>
 <span id="cb16-294"><a href="#cb16-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-295"><a href="#cb16-295" aria-hidden="true" tabindex="-1"></a><span class="in"># Extracts the balance table and removes unwanted columns. </span></span>
-<span id="cb16-296"><a href="#cb16-296" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_boosted_btab &lt;- nsw_boosted_btab$Balance[-1,-c(2,3)]</span></span>
-<span id="cb16-297"><a href="#cb16-297" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_raw_btab &lt;- nsw_raw_btab$Balance[-c(5,6)]</span></span>
-<span id="cb16-298"><a href="#cb16-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-295"><a href="#cb16-295" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_boosted_btab &lt;- nsw_boosted_btab$Balance[-1,-c(2,3)]</span></span>
+<span id="cb16-296"><a href="#cb16-296" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_raw_btab &lt;- nsw_raw_btab$Balance[-c(5,6)]</span></span>
+<span id="cb16-297"><a href="#cb16-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-298"><a href="#cb16-298" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-299"><a href="#cb16-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-300"><a href="#cb16-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-303"><a href="#cb16-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb16-304"><a href="#cb16-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-combined-btab</span></span>
-<span id="cb16-305"><a href="#cb16-305" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb16-306"><a href="#cb16-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: !expr "knitr::is_html_output()"</span></span>
-<span id="cb16-307"><a href="#cb16-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Code: Create [Table 3.1](tbl-combined-btab)"</span></span>
-<span id="cb16-308"><a href="#cb16-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Standardised mean difference (a measure of balance) across different covariates in the National Supported Word dataset. The values are categorised for different propenensity score methods allowing a comparison. Balance tables are computed using `bal.tab()` from the `cobalt` package."</span></span>
-<span id="cb16-309"><a href="#cb16-309" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb16-310"><a href="#cb16-310" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb16-311"><a href="#cb16-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-312"><a href="#cb16-312" aria-hidden="true" tabindex="-1"></a>collabels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Type"</span>, <span class="st">"SMD"</span>, <span class="st">"Balanced"</span>, <span class="st">"Variance Ratio"</span>,<span class="st">"Method"</span>)</span>
-<span id="cb16-313"><a href="#cb16-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-314"><a href="#cb16-314" aria-hidden="true" tabindex="-1"></a>rowlabels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age"</span>, <span class="st">"Education"</span>, <span class="st">"Income 1975"</span>,<span class="st">"Black"</span>, </span>
-<span id="cb16-315"><a href="#cb16-315" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Hispanic"</span>, <span class="st">"Degree"</span>, <span class="st">"Married"</span>)</span>
-<span id="cb16-316"><a href="#cb16-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-317"><a href="#cb16-317" aria-hidden="true" tabindex="-1"></a>nsw_raw_btab<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">"Raw Data"</span></span>
-<span id="cb16-318"><a href="#cb16-318" aria-hidden="true" tabindex="-1"></a>nsw_logit_btab<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">"IPTW: Logistic Regression"</span></span>
-<span id="cb16-319"><a href="#cb16-319" aria-hidden="true" tabindex="-1"></a>nsw_boosted_btab<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">"IPTW: Boosting"</span></span>
-<span id="cb16-320"><a href="#cb16-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-321"><a href="#cb16-321" aria-hidden="true" tabindex="-1"></a>combined_btab <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">setNames</span>(nsw_raw_btab,collabels),</span>
-<span id="cb16-322"><a href="#cb16-322" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">setNames</span>(nsw_logit_btab,collabels),</span>
-<span id="cb16-323"><a href="#cb16-323" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">setNames</span>(nsw_boosted_btab,collabels))</span>
-<span id="cb16-324"><a href="#cb16-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-325"><a href="#cb16-325" aria-hidden="true" tabindex="-1"></a>combined_btab<span class="sc">$</span>Variable <span class="ot">&lt;-</span> <span class="fu">rep</span>(rowlabels,<span class="dv">3</span>)</span>
-<span id="cb16-326"><a href="#cb16-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-327"><a href="#cb16-327" aria-hidden="true" tabindex="-1"></a>combined_btab <span class="ot">&lt;-</span> combined_btab[<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)]</span>
-<span id="cb16-328"><a href="#cb16-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-329"><a href="#cb16-329" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(combined_btab) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb16-330"><a href="#cb16-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-331"><a href="#cb16-331" aria-hidden="true" tabindex="-1"></a>combined_btab<span class="sc">$</span>Balanced <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb16-332"><a href="#cb16-332" aria-hidden="true" tabindex="-1"></a>          combined_btab<span class="sc">$</span>Balanced <span class="sc">==</span> <span class="st">"Not Balanced, &gt;0.1"</span>, <span class="st">"No"</span>, <span class="st">"Yes"</span>)</span>
-<span id="cb16-333"><a href="#cb16-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-334"><a href="#cb16-334" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(combined_btab[<span class="sc">-</span><span class="dv">6</span>], <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">align =</span> <span class="st">"c"</span>, </span>
-<span id="cb16-335"><a href="#cb16-335" aria-hidden="true" tabindex="-1"></a>      <span class="at">font_size =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-336"><a href="#cb16-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb16-337"><a href="#cb16-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-338"><a href="#cb16-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-339"><a href="#cb16-339" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">bold =</span> F, <span class="at">width =</span> <span class="st">"3cm"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-340"><a href="#cb16-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="at">index =</span> <span class="fu">rev</span>(<span class="fu">table</span>(combined_btab<span class="sc">$</span>Method)))</span>
-<span id="cb16-341"><a href="#cb16-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-342"><a href="#cb16-342" aria-hidden="true" tabindex="-1"></a><span class="co">#perhaps use the method from the coffe table as this is not as neat as the other method. for mergin that is.</span></span>
-<span id="cb16-343"><a href="#cb16-343" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-344"><a href="#cb16-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-345"><a href="#cb16-345" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- double check that the variables are in the righ tpalces in the table  --&gt;</span></span>
-<span id="cb16-346"><a href="#cb16-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-347"><a href="#cb16-347" aria-hidden="true" tabindex="-1"></a>@tbl-combined-btab shows that both logistic regression and the GBM have reduced imbalance. The raw data exhibits imbalance across age, years of education, if someone is gispanic, and if someone has a bachelors degree. Imbalanced datasets leads to biased treatment effect estimation so the estimate of the treatment effect in the raw data may be biased. In this example, logistic regression appears to achieve the best covariate balance although GBM achieves slightly better variance ratios.</span>
-<span id="cb16-348"><a href="#cb16-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-349"><a href="#cb16-349" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- perhaps find the threshold for variance ratios --&gt;</span></span>
-<span id="cb16-350"><a href="#cb16-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-351"><a href="#cb16-351" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 9: Results {#sec-nsw-results}</span></span>
-<span id="cb16-352"><a href="#cb16-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-353"><a href="#cb16-353" aria-hidden="true" tabindex="-1"></a>Finally, the treatment effect can be estimated using <span class="in">`lm_weightit()`</span> from the <span class="in">`WeightIt`</span> package and <span class="in">`avg_comparisons()`</span> from the <span class="in">`marginaleffects`</span> package. <span class="in">`lm_weightit()`</span> fits a linear model with a covariance matrix that accounts for the estimation of weights using IPW. Additionally, <span class="in">`avg_comparisons()`</span> computes the contrast between the treatment and control group to obtain an estimate of the treatment effect.</span>
-<span id="cb16-354"><a href="#cb16-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-355"><a href="#cb16-355" aria-hidden="true" tabindex="-1"></a>These steps perform G-computation, meaning that potential outcomes are estimated under treatment and control for each observation <span class="co">[</span><span class="ot">@Naimi2017</span><span class="co">]</span>. The contrast of the mean of each of the two potential outcomes is the estimate of the treatment effect. Note that the outcome variable is <span class="in">`re78`</span> which is real income in 1978 meaning that the income is adjusted for inflation. Previously, the treatment indicator was the outcome variable because the propensity scores are a prediction of the treatment indicator.</span>
-<span id="cb16-356"><a href="#cb16-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-357"><a href="#cb16-357" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
-<span id="cb16-358"><a href="#cb16-358" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: compute-ate-nsw-boosted</span></span>
-<span id="cb16-359"><a href="#cb16-359" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
-<span id="cb16-360"><a href="#cb16-360" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_boosted_lm &lt;- lm_weightit(re78 ~ treat * (age + educ + re75 + black + </span></span>
-<span id="cb16-361"><a href="#cb16-361" aria-hidden="true" tabindex="-1"></a><span class="in">                              hisp + degree + marr), data = nsw_data, </span></span>
-<span id="cb16-362"><a href="#cb16-362" aria-hidden="true" tabindex="-1"></a><span class="in">                              weights = nsw_boosted_weight$weights)</span></span>
-<span id="cb16-363"><a href="#cb16-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-364"><a href="#cb16-364" aria-hidden="true" tabindex="-1"></a><span class="in">library(marginaleffects)</span></span>
-<span id="cb16-365"><a href="#cb16-365" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_boosted_result &lt;- avg_comparisons(nsw_boosted_lm, variables = "treat")</span></span>
-<span id="cb16-366"><a href="#cb16-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-367"><a href="#cb16-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-368"><a href="#cb16-368" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb16-369"><a href="#cb16-369" aria-hidden="true" tabindex="-1"></a>nsw_boosted_lm <span class="ot">&lt;-</span> <span class="fu">lm_weightit</span>(re78 <span class="sc">~</span> treat <span class="sc">*</span> (age <span class="sc">+</span> educ <span class="sc">+</span> re75 <span class="sc">+</span> black <span class="sc">+</span> <span class="co">#&lt;1&gt;</span></span>
-<span id="cb16-370"><a href="#cb16-370" aria-hidden="true" tabindex="-1"></a>                              hisp <span class="sc">+</span> degree <span class="sc">+</span> marr), <span class="at">data =</span> nsw_data, <span class="co">#&lt;1&gt;</span></span>
-<span id="cb16-371"><a href="#cb16-371" aria-hidden="true" tabindex="-1"></a>                              <span class="at">weights =</span> nsw_boosted_weight<span class="sc">$</span>weights) <span class="co">#&lt;2&gt;</span></span>
-<span id="cb16-372"><a href="#cb16-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-373"><a href="#cb16-373" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects) <span class="co">#&lt;3&gt;</span></span>
-<span id="cb16-374"><a href="#cb16-374" aria-hidden="true" tabindex="-1"></a>nsw_boosted_result <span class="ot">&lt;-</span> <span class="fu">avg_comparisons</span>(nsw_boosted_lm, <span class="at">variables =</span> <span class="st">"treat"</span>) <span class="co">#&lt;3&gt;</span></span>
-<span id="cb16-375"><a href="#cb16-375" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-376"><a href="#cb16-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-377"><a href="#cb16-377" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Uses <span class="in">`lm_weightit()`</span> to compute pseudo-outcomes. The formula here specifies an interaction between the treatment and all other variables. Note that <span class="in">`*`</span> indicates multiplication in R.</span>
-<span id="cb16-378"><a href="#cb16-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-379"><a href="#cb16-379" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Specifies the <span class="in">`weights`</span> from the <span class="in">`nsw_boosted_weight`</span> object created earlier by the <span class="in">`weightit()`</span> function. Intuitively, this is performing linear regression using the pseudo-population, where the pseudo-population is created weighting the data by <span class="in">`nsw_boosted_weight$weights`</span>.</span>
-<span id="cb16-380"><a href="#cb16-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-381"><a href="#cb16-381" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Computes a comparison between the potential outcomes as well as standard errors for inference.</span>
-<span id="cb16-382"><a href="#cb16-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-383"><a href="#cb16-383" aria-hidden="true" tabindex="-1"></a>Additionally, this process is followed for the logistic regression propensity scores and the results are combined in to a table for comparison.</span>
-<span id="cb16-384"><a href="#cb16-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-385"><a href="#cb16-385" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
-<span id="cb16-386"><a href="#cb16-386" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-nsw-comparisons</span></span>
-<span id="cb16-387"><a href="#cb16-387" aria-hidden="true" tabindex="-1"></a><span class="in">#| code-fold: true</span></span>
-<span id="cb16-388"><a href="#cb16-388" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: !expr "knitr::is_html_output()"</span></span>
-<span id="cb16-389"><a href="#cb16-389" aria-hidden="true" tabindex="-1"></a><span class="in">#| code-summary: "Code: Create [Table 3.2](tbl-nsw-comparisons)"</span></span>
-<span id="cb16-390"><a href="#cb16-390" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: "Comparison of estimates of the average treatment for the National Supported Work data."</span></span>
-<span id="cb16-391"><a href="#cb16-391" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_logit_lm &lt;- lm_weightit(re78~treat*(age + educ + </span></span>
-<span id="cb16-392"><a href="#cb16-392" aria-hidden="true" tabindex="-1"></a><span class="in">                             re75 + black + hisp + </span></span>
-<span id="cb16-393"><a href="#cb16-393" aria-hidden="true" tabindex="-1"></a><span class="in">                             degree + marr), data = nsw_data, </span></span>
-<span id="cb16-394"><a href="#cb16-394" aria-hidden="true" tabindex="-1"></a><span class="in">                             weights = nsw_logit_weight$weights)</span></span>
-<span id="cb16-395"><a href="#cb16-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-396"><a href="#cb16-396" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_logit_result &lt;- avg_comparisons(nsw_logit_lm, variables = "treat")</span></span>
-<span id="cb16-397"><a href="#cb16-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-398"><a href="#cb16-398" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_comparisons_tab &lt;- rbind(extract_comparison_results(nsw_logit_result),</span></span>
-<span id="cb16-399"><a href="#cb16-399" aria-hidden="true" tabindex="-1"></a><span class="in">                             extract_comparison_results(nsw_boosted_result))</span></span>
-<span id="cb16-400"><a href="#cb16-400" aria-hidden="true" tabindex="-1"></a><span class="in">rownames(nsw_comparisons_tab) &lt;- c("Logistic Regression", "GBM")</span></span>
-<span id="cb16-401"><a href="#cb16-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-402"><a href="#cb16-402" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::kable(nsw_comparisons_tab, digits = 4)</span></span>
-<span id="cb16-403"><a href="#cb16-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb16-404"><a href="#cb16-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-405"><a href="#cb16-405" aria-hidden="true" tabindex="-1"></a>@tbl-nsw-comparisons shows that both estimates of the treatment effect are nearly identical at $\$1610$ with logistic regression inferring a $\$0.86$ larger treatment effect. Additionally, these results are statistically significant at the $5\%$ level with nearly identical standard errors.</span>
+<span id="cb16-302"><a href="#cb16-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb16-303"><a href="#cb16-303" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-combined-btab</span></span>
+<span id="cb16-304"><a href="#cb16-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb16-305"><a href="#cb16-305" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: !expr "knitr::is_html_output()"</span></span>
+<span id="cb16-306"><a href="#cb16-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Code: Create [Table 3.1](tbl-combined-btab)"</span></span>
+<span id="cb16-307"><a href="#cb16-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Standardised mean difference (a measure of balance) across different covariates in the National Supported Word dataset. The values are categorised for different propenensity score methods allowing a comparison. Balance tables are computed using `bal.tab()` from the `cobalt` package."</span></span>
+<span id="cb16-308"><a href="#cb16-308" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-309"><a href="#cb16-309" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb16-310"><a href="#cb16-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-311"><a href="#cb16-311" aria-hidden="true" tabindex="-1"></a>collabels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Type"</span>, <span class="st">"SMD"</span>, <span class="st">"Balanced"</span>, <span class="st">"Variance Ratio"</span>,<span class="st">"Method"</span>)</span>
+<span id="cb16-312"><a href="#cb16-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-313"><a href="#cb16-313" aria-hidden="true" tabindex="-1"></a>rowlabels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age"</span>, <span class="st">"Education"</span>, <span class="st">"Income 1975"</span>,<span class="st">"Black"</span>, </span>
+<span id="cb16-314"><a href="#cb16-314" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Hispanic"</span>, <span class="st">"Degree"</span>, <span class="st">"Married"</span>)</span>
+<span id="cb16-315"><a href="#cb16-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-316"><a href="#cb16-316" aria-hidden="true" tabindex="-1"></a>nsw_raw_btab<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">"Raw Data"</span></span>
+<span id="cb16-317"><a href="#cb16-317" aria-hidden="true" tabindex="-1"></a>nsw_logit_btab<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">"IPTW: Logistic Regression"</span></span>
+<span id="cb16-318"><a href="#cb16-318" aria-hidden="true" tabindex="-1"></a>nsw_boosted_btab<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">"IPTW: Boosting"</span></span>
+<span id="cb16-319"><a href="#cb16-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-320"><a href="#cb16-320" aria-hidden="true" tabindex="-1"></a>combined_btab <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">setNames</span>(nsw_raw_btab,collabels),</span>
+<span id="cb16-321"><a href="#cb16-321" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">setNames</span>(nsw_logit_btab,collabels),</span>
+<span id="cb16-322"><a href="#cb16-322" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">setNames</span>(nsw_boosted_btab,collabels))</span>
+<span id="cb16-323"><a href="#cb16-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-324"><a href="#cb16-324" aria-hidden="true" tabindex="-1"></a>combined_btab<span class="sc">$</span>Variable <span class="ot">&lt;-</span> <span class="fu">rep</span>(rowlabels,<span class="dv">3</span>)</span>
+<span id="cb16-325"><a href="#cb16-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-326"><a href="#cb16-326" aria-hidden="true" tabindex="-1"></a>combined_btab <span class="ot">&lt;-</span> combined_btab[<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)]</span>
+<span id="cb16-327"><a href="#cb16-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-328"><a href="#cb16-328" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(combined_btab) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb16-329"><a href="#cb16-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-330"><a href="#cb16-330" aria-hidden="true" tabindex="-1"></a>combined_btab<span class="sc">$</span>Balanced <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb16-331"><a href="#cb16-331" aria-hidden="true" tabindex="-1"></a>          combined_btab<span class="sc">$</span>Balanced <span class="sc">==</span> <span class="st">"Not Balanced, &gt;0.1"</span>, <span class="st">"No"</span>, <span class="st">"Yes"</span>)</span>
+<span id="cb16-332"><a href="#cb16-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-333"><a href="#cb16-333" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(combined_btab[<span class="sc">-</span><span class="dv">6</span>], <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">align =</span> <span class="st">"c"</span>, </span>
+<span id="cb16-334"><a href="#cb16-334" aria-hidden="true" tabindex="-1"></a>      <span class="at">font_size =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-335"><a href="#cb16-335" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb16-336"><a href="#cb16-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-337"><a href="#cb16-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-338"><a href="#cb16-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">bold =</span> F, <span class="at">width =</span> <span class="st">"3cm"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-339"><a href="#cb16-339" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Raw Data"</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="at">label_row_css =</span> <span class="st">"text-align: center;"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-340"><a href="#cb16-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Logistic Regression and IPTW"</span>, <span class="dv">8</span>, <span class="dv">14</span>, </span>
+<span id="cb16-341"><a href="#cb16-341" aria-hidden="true" tabindex="-1"></a>             <span class="at">label_row_css =</span> <span class="st">"text-align: center;"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-342"><a href="#cb16-342" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Boosting Machine and IPTW"</span>, <span class="dv">15</span>, <span class="dv">21</span>,</span>
+<span id="cb16-343"><a href="#cb16-343" aria-hidden="true" tabindex="-1"></a>             <span class="at">label_row_css =</span> <span class="st">"text-align: center;"</span>)</span>
+<span id="cb16-344"><a href="#cb16-344" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-345"><a href="#cb16-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-346"><a href="#cb16-346" aria-hidden="true" tabindex="-1"></a>@tbl-combined-btab shows that both logistic regression and the GBM have reduced imbalance. The raw data exhibits imbalance across age, years of education, if someone is gispanic, and if someone has a bachelors degree. Imbalanced datasets leads to biased treatment effect estimation so the estimate of the treatment effect in the raw data may be biased. In this example, logistic regression appears to achieve the best covariate balance although GBM achieves slightly better variance ratios.</span>
+<span id="cb16-347"><a href="#cb16-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-348"><a href="#cb16-348" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- perhaps find the threshold for variance ratios --&gt;</span></span>
+<span id="cb16-349"><a href="#cb16-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-350"><a href="#cb16-350" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 9: Results {#sec-nsw-results}</span></span>
+<span id="cb16-351"><a href="#cb16-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-352"><a href="#cb16-352" aria-hidden="true" tabindex="-1"></a>Finally, the treatment effect can be estimated using <span class="in">`lm_weightit()`</span> from the <span class="in">`WeightIt`</span> package and <span class="in">`avg_comparisons()`</span> from the <span class="in">`marginaleffects`</span> package. <span class="in">`lm_weightit()`</span> fits a linear model with a covariance matrix that accounts for the estimation of weights using IPW. Additionally, <span class="in">`avg_comparisons()`</span> computes the contrast between the treatment and control group to obtain an estimate of the treatment effect.</span>
+<span id="cb16-353"><a href="#cb16-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-354"><a href="#cb16-354" aria-hidden="true" tabindex="-1"></a>These steps perform G-computation, meaning that potential outcomes are estimated under treatment and control for each observation <span class="co">[</span><span class="ot">@Naimi2017</span><span class="co">]</span>. The contrast of the mean of each of the two potential outcomes is the estimate of the treatment effect. Note that the outcome variable is <span class="in">`re78`</span> which is real income in 1978 meaning that the income is adjusted for inflation. Previously, the treatment indicator was the outcome variable because the propensity scores are a prediction of the treatment indicator.</span>
+<span id="cb16-355"><a href="#cb16-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-356"><a href="#cb16-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb16-357"><a href="#cb16-357" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: compute-ate-nsw-boosted</span></span>
+<span id="cb16-358"><a href="#cb16-358" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb16-359"><a href="#cb16-359" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_boosted_lm &lt;- lm_weightit(re78 ~ treat * (age + educ + re75 + black + </span></span>
+<span id="cb16-360"><a href="#cb16-360" aria-hidden="true" tabindex="-1"></a><span class="in">                              hisp + degree + marr), data = nsw_data, </span></span>
+<span id="cb16-361"><a href="#cb16-361" aria-hidden="true" tabindex="-1"></a><span class="in">                              weights = nsw_boosted_weight$weights)</span></span>
+<span id="cb16-362"><a href="#cb16-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-363"><a href="#cb16-363" aria-hidden="true" tabindex="-1"></a><span class="in">library(marginaleffects)</span></span>
+<span id="cb16-364"><a href="#cb16-364" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_boosted_result &lt;- avg_comparisons(nsw_boosted_lm, variables = "treat")</span></span>
+<span id="cb16-365"><a href="#cb16-365" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-366"><a href="#cb16-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-367"><a href="#cb16-367" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb16-368"><a href="#cb16-368" aria-hidden="true" tabindex="-1"></a>nsw_boosted_lm <span class="ot">&lt;-</span> <span class="fu">lm_weightit</span>(re78 <span class="sc">~</span> treat <span class="sc">*</span> (age <span class="sc">+</span> educ <span class="sc">+</span> re75 <span class="sc">+</span> black <span class="sc">+</span> <span class="co">#&lt;1&gt;</span></span>
+<span id="cb16-369"><a href="#cb16-369" aria-hidden="true" tabindex="-1"></a>                              hisp <span class="sc">+</span> degree <span class="sc">+</span> marr), <span class="at">data =</span> nsw_data, <span class="co">#&lt;1&gt;</span></span>
+<span id="cb16-370"><a href="#cb16-370" aria-hidden="true" tabindex="-1"></a>                              <span class="at">weights =</span> nsw_boosted_weight<span class="sc">$</span>weights) <span class="co">#&lt;2&gt;</span></span>
+<span id="cb16-371"><a href="#cb16-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-372"><a href="#cb16-372" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects) <span class="co">#&lt;3&gt;</span></span>
+<span id="cb16-373"><a href="#cb16-373" aria-hidden="true" tabindex="-1"></a>nsw_boosted_result <span class="ot">&lt;-</span> <span class="fu">avg_comparisons</span>(nsw_boosted_lm, <span class="at">variables =</span> <span class="st">"treat"</span>) <span class="co">#&lt;3&gt;</span></span>
+<span id="cb16-374"><a href="#cb16-374" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-375"><a href="#cb16-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-376"><a href="#cb16-376" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Uses <span class="in">`lm_weightit()`</span> to compute pseudo-outcomes. The formula here specifies an interaction between the treatment and all other variables. Note that <span class="in">`*`</span> indicates multiplication in R.</span>
+<span id="cb16-377"><a href="#cb16-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-378"><a href="#cb16-378" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Specifies the <span class="in">`weights`</span> from the <span class="in">`nsw_boosted_weight`</span> object created earlier by the <span class="in">`weightit()`</span> function. Intuitively, this is performing linear regression using the pseudo-population, where the pseudo-population is created weighting the data by <span class="in">`nsw_boosted_weight$weights`</span>.</span>
+<span id="cb16-379"><a href="#cb16-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-380"><a href="#cb16-380" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Computes a comparison between the potential outcomes as well as standard errors for inference.</span>
+<span id="cb16-381"><a href="#cb16-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-382"><a href="#cb16-382" aria-hidden="true" tabindex="-1"></a>Additionally, this process is followed for the logistic regression propensity scores and the results are combined in to a table for comparison.</span>
+<span id="cb16-383"><a href="#cb16-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-384"><a href="#cb16-384" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb16-385"><a href="#cb16-385" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-nsw-comparisons</span></span>
+<span id="cb16-386"><a href="#cb16-386" aria-hidden="true" tabindex="-1"></a><span class="in">#| code-fold: true</span></span>
+<span id="cb16-387"><a href="#cb16-387" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: !expr "knitr::is_html_output()"</span></span>
+<span id="cb16-388"><a href="#cb16-388" aria-hidden="true" tabindex="-1"></a><span class="in">#| code-summary: "Code: Create [Table 3.2](tbl-nsw-comparisons)"</span></span>
+<span id="cb16-389"><a href="#cb16-389" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: "Comparison of estimates of the average treatment for the National Supported Work data."</span></span>
+<span id="cb16-390"><a href="#cb16-390" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_logit_lm &lt;- lm_weightit(re78~treat*(age + educ + </span></span>
+<span id="cb16-391"><a href="#cb16-391" aria-hidden="true" tabindex="-1"></a><span class="in">                             re75 + black + hisp + </span></span>
+<span id="cb16-392"><a href="#cb16-392" aria-hidden="true" tabindex="-1"></a><span class="in">                             degree + marr), data = nsw_data, </span></span>
+<span id="cb16-393"><a href="#cb16-393" aria-hidden="true" tabindex="-1"></a><span class="in">                             weights = nsw_logit_weight$weights)</span></span>
+<span id="cb16-394"><a href="#cb16-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-395"><a href="#cb16-395" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_logit_result &lt;- avg_comparisons(nsw_logit_lm, variables = "treat")</span></span>
+<span id="cb16-396"><a href="#cb16-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-397"><a href="#cb16-397" aria-hidden="true" tabindex="-1"></a><span class="in">nsw_comparisons_tab &lt;- rbind(extract_comparison_results(nsw_logit_result),</span></span>
+<span id="cb16-398"><a href="#cb16-398" aria-hidden="true" tabindex="-1"></a><span class="in">                             extract_comparison_results(nsw_boosted_result))</span></span>
+<span id="cb16-399"><a href="#cb16-399" aria-hidden="true" tabindex="-1"></a><span class="in">rownames(nsw_comparisons_tab) &lt;- c("Logistic Regression", "GBM")</span></span>
+<span id="cb16-400"><a href="#cb16-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-401"><a href="#cb16-401" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::kable(nsw_comparisons_tab, digits = 4)</span></span>
+<span id="cb16-402"><a href="#cb16-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-403"><a href="#cb16-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-404"><a href="#cb16-404" aria-hidden="true" tabindex="-1"></a>@tbl-nsw-comparisons shows that both estimates of the treatment effect are nearly identical at $\$1610$ with logistic regression inferring a $\$0.86$ larger treatment effect. Additionally, these results are statistically significant at the $5\%$ level with nearly identical standard errors.</span>
+<span id="cb16-405"><a href="#cb16-405" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-406"><a href="#cb16-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-407"><a href="#cb16-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-410"><a href="#cb16-410" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb16-411"><a href="#cb16-411" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb16-412"><a href="#cb16-412" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"globals.RData"</span>)</span>
-<span id="cb16-413"><a href="#cb16-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb16-409"><a href="#cb16-409" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb16-410"><a href="#cb16-410" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb16-411"><a href="#cb16-411" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"globals.RData"</span>)</span>
+<span id="cb16-412"><a href="#cb16-412" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/implimentation_workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/implimentation_workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
