@@ -130,7 +130,7 @@ div.csl-indent {
 </script>
 
 
-<meta name="citation_title" content="[6]{.chapter-number}&nbsp; [Appendix]{.chapter-title}">
+<meta name="citation_title" content="[[6]{.chapter-number}&nbsp; [Appendix]{.chapter-title}]{#sec-appendix .quarto-section-identifier}">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=An introduction to propensity score methods for reducing the effects of confounding in observational studies;,citation_abstract=The propensity score is the probability of treatment assignment conditional on observed baseline characteristics. The propensity score allows one to design and analyze an observational (nonrandomized) study so that it mimics some of the particular characteristics of a randomized controlled trial. In particular, the propensity score is a balancing score: conditional on the propensity score, the distribution of observed baseline covariates will be similar between treated and untreated subjects. I describe 4 different propensity score methods: matching on the propen-sity score, stratification on the propensity score, inverse probability of treatment weighting using the propensity score, and covariate adjustment using the propensity score. I describe balance diagnostics for examining whether the propensity score model has been adequately specified. Furthermore, I discuss differences between regression-based methods and propensity score-based methods for the analysis of observational data. I describe different causal average treatment effects and their relationship with propensity score analyses.  Taylor &amp;amp;amp; Francis Group, LLC.;,citation_author=Peter Austin;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=3;,citation_doi=10.1080/00273171.2011.568786;,citation_issn=00273171;,citation_pmid=21818162;,citation_volume=46;,citation_journal_title=Multivariate Behavioral Research;">
 <meta name="citation_reference" content="citation_title=The Changing Risk and Burden of Wildfire in the Us;,citation_abstract=Recent dramatic and deadly increases in global wildfire activity have increased attention on the causes of wildfires, their consequences, and how risk from fire might be mitigated. Here we bring together data on the changing risk and societal burden of wildfire in the US. We estimate that nearly 50 million homes are currently in the wildland-urban interface in the US, a number increasing by 1 million houses every 3 years. Using a statistical model that links satellite-based fire and smoke data to pollution monitoring stations, we estimate that wildfires have accounted for up to 25% of PM2.5 in recent years across the US, and up to half in some Western regions. We then show that ambient exposure to smoke-based PM2.5 does not follow traditional socioeconomic exposure gradients. Finally, using stylized scenarios, we show that fuels management interventions have large but uncertain impacts on health outcomes, and that future health impacts from climate-change-induced wildfire smoke could approach projected overall increases in temperature-related mortality from climate change. We draw lessons for research and policy.;,citation_author=Marshall Burke;,citation_author=Anne Driscoll;,citation_author=Jenny Xue;,citation_author=Sam Heft-Neal;,citation_author=Jennifer Burney;,citation_author=Michael W. Wara;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_doi=10.2139/ssrn.3637724;,citation_journal_title=SSRN Electronic Journal;">
@@ -364,7 +364,7 @@ div.csl-indent {
   <li><a href="#sec-data-nsw-jobs" id="toc-sec-data-nsw-jobs" class="nav-link" data-scroll-target="#sec-data-nsw-jobs"><span class="header-section-number">6.1.1</span> National Supported Work Data</a></li>
   <li><a href="#coffee-data-from-jena2012" id="toc-coffee-data-from-jena2012" class="nav-link" data-scroll-target="#coffee-data-from-jena2012"><span class="header-section-number">6.1.2</span> Coffee Data from <span class="citation" data-cites="Jena2012">Jena et al. (2012)</span></a></li>
   </ul></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">6.2</span> Functions</a></li>
+  <li><a href="#sec-functions" id="toc-sec-functions" class="nav-link" data-scroll-target="#sec-functions"><span class="header-section-number">6.2</span> Functions</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/appendix.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -373,7 +373,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-appendix" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -418,8 +418,8 @@ div.csl-indent {
 </div>
 </section>
 </section>
-<section id="functions" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">6.2</span> Functions</h2>
+<section id="sec-functions" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-functions"><span class="header-section-number">6.2</span> Functions</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>extract_comparison_results <span class="ot">&lt;-</span> <span class="cf">function</span>(results) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  extracted_results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -930,7 +930,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">load(file = "globals.RData")</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Appendix</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Appendix {#sec-appendix}</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datasets {#sec-datasets}</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -960,7 +960,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>coffee_data <span class="ot">&lt;-</span> coffee_data[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">56</span>,<span class="dv">84</span>,<span class="dv">156</span> ),]</span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functions</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functions {#sec-functions}</span></span>
 <span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: functions</span></span>
@@ -978,22 +978,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code Provided for PDF Output</span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r get-labels, echo = FALSE}</span></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="in">labs = knitr::all_labels()</span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="in">labs = setdiff(labs, c("get-labels", "nsw_logit_pmodel", "nsw_boosted_weight", "nsw-btab-logit", "compute-ate-nsw-boosted" ))</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r all-code, ref.label=labs, eval=FALSE}</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"globals.RData"</span>)</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="at">file =</span> <span class="st">"globals.RData"</span>)</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
