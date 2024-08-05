@@ -91,10 +91,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -165,7 +167,7 @@ window.Quarto = {
 
 <meta name="citation_title" content="[[2]{.chapter-number}&nbsp; [Propensity Scores and Machine Learning]{.chapter-title}]{#sec-propensity .quarto-section-identifier}">
 <meta name="citation_language" content="en">
-<meta name="citation_reference" content="citation_title=Large sample properties of matching estimators for average treatment effects;,citation_abstract=Matching estimators for average treatment effects are widely used in evaluation research despite the fact that their large sample properties have not been established in many cases. The absence of formal results in this area may be partly due to the fact that standard asymptotic expansions do not apply to matching estimators with a fixed number of matches because such estimators are highly nonsmooth functionals of the data. In this article we develop new methods for analyzing the large sample properties of matching estimators and establish a number of new results. We focus on matching with replacement with a fixed number of matches. First, we show that matching estimators are not N 1/2-consistent in general and describe conditions under which matching estimators do attain N 1/2-consistency. Second, we show that even in settings where matching estimators are N 1/2-consistent, simple matching estimators with a fixed number of matches do not attain the semiparametric efficiency bound. Third, we provide a consistent estimator for the large sample variance that does not require consistent nonparametric estimation of unknown functions. Software for implementing these methods is available in Matlab, Stata, and R.  The Econometric Society 2006.;,citation_author=Alberto Abadie;,citation_author=Guido W. Imbens;,citation_publication_date=2006;,citation_cover_date=2006;,citation_year=2006;,citation_issue=1;,citation_doi=10.1111/j.1468-0262.2006.00655.x;,citation_issn=00129682;,citation_volume=74;,citation_journal_title=Econometrica;">
+<meta name="citation_reference" content="citation_title=Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs;,citation_abstract=This article uses propensity score methods to estimate the treatment impact of the National Supported Work (NSW) Demonstration, a labor training program, on postintervention earnings. We use data from Lalonde’s evaluation of nonexperimental methods that combine the treated units from a randomized evaluation of the NSW with nonexperimental comparison units drawn from survey datasets. We apply propensity score methods to this composite dataset and demonstrate that, relative to the estimators that Lalonde evaluates, propensity score estimates of the treatment impact are much closer to the experimental benchmark estimate. Propensity score methods assume that the variables associated with assignment to treatment are observed (referred to as ignorable treatment assignment, or selection on observables). Even under this assumption, it is difficult to control for differences between the treatment and comparison groups when they are dissimilar and when there are many preintervention variables. The estimated propensity score (the probability of assignment to treatment, conditional on preintervention variables) summarizes the preintervention variables. This offers a diagnostic on the comparability of the treatment and comparison groups, because one has only to compare the estimated propensity score across the two groups. We discuss several methods (such as stratification and matching) that use the propensity score to estimate the treatment impact. When the range of estimated propensity scores of the treatment and comparison groups overlap, these methods can estimate the treatment impact for the treatment group. A sensitivity analysis shows that our estimates are not sensitive to the specification of the estimated propensity score, but are sensitive to the assumption of selection on observables. We conclude that when the treatment and comparison groups overlap, and when the variables determining assignment to treatment are observed, these methods provide a means to estimate the treatment impact. Even though propensity score methods are not always applicable, they offer a diagnostic on the quality of nonexperimental comparison groups in terms of observable preintervention variables.  1999 Taylor &amp;amp;amp; Francis Group, LLC.;,citation_author=Rajeev H. Dehejia;,citation_author=Sadek Wahba;,citation_publication_date=1999;,citation_cover_date=1999;,citation_year=1999;,citation_issue=448;,citation_doi=10.1080/01621459.1999.10473858;,citation_issn=1537274X;,citation_volume=94;,citation_journal_title=Journal of the American Statistical Association;">
 <meta name="citation_reference" content="citation_title=Estimating Treatment Effects with Causal Forests: An Application;,citation_abstract=We apply causal forests to a dataset derived from the National Study of Learning Mindsets, and discusses resulting practical and conceptual challenges. This note will appear in an upcoming issue of Observational Studies, Empirical Investigation of Methods for Heterogeneity, that compiles several analyses of the same dataset.;,citation_author=Susan Athey;,citation_author=Stefan Wager;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://arxiv.org/abs/1902.07409;,citation_issue=2;,citation_doi=10.1353/obs.2019.0001;,citation_issn=27673324;,citation_volume=5;,citation_journal_title=Observational Studies;">
 <meta name="citation_reference" content="citation_title=Causal Forest Estimation of Heterogeneous Household Response to Time-Of-Use Electricity Pricing Schemes;,citation_author=Eoghan O Neill;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://arxiv.org/abs/arXiv:1810.09179v3;">
 <meta name="citation_reference" content="citation_title=Why Propensity Scores Should Not Be Used for Matching;,citation_abstract=We show that propensity score matching (PSM), an enormously popular method of preprocessing data for causal inference, often accomplishes the opposite of its intended goal - thus increasing imbalance, inefficiency, model dependence, and bias. The weakness of PSM comes from its attempts to approximate a completely randomized experiment, rather than, as with other matching methods, a more efficient fully blocked randomized experiment. PSM is thus uniquely blind to the often large portion of imbalance that can be eliminated by approximating full blocking with other matching methods. Moreover, in data balanced enough to approximate complete randomization, either to begin with or after pruning some observations, PSM approximates random matching which, we show, increases imbalance even relative to the original data. Although these results suggest researchers replace PSM with one of the other available matching methods, propensity scores have other productive uses.;,citation_author=Gary King;,citation_author=Richard Nielsen;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_issue=4;,citation_doi=10.1017/pan.2019.11;,citation_issn=14764989;,citation_volume=27;,citation_journal_title=Political Analysis;">
@@ -173,6 +175,7 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Measuring the effectiveness of protected area networks in reducing deforestation;,citation_abstract=Global efforts to reduce tropical deforestation rely heavily on the establishment of protected areas. Measuring the effectiveness of these areas is difficult because the amount of deforestation that would have occurred in the absence of legal protection cannot be directly observed. Conventional methods of evaluating the effectiveness of protected areas can be biased because protection is not randomly assigned and because protection can induce deforestation spillovers (displacement) to neighboring forests. We demonstrate that estimates of effectiveness can be substantially improved by controlling for biases along dimensions that are observable, measuring spatial spillovers, and testing the sensitivity of estimates to potential hidden biases. We apply matching methods to evaluate the impact on deforestation of Costa Rica’s renowned protected-area system between 1960 and 1997. We find that protection reduced deforestation: approximately 10% of the protected forests would have been deforested had they not been protected. Conventional approaches to evaluating conservation impact, which fail to control for observable covariates correlated with both protection and deforestation, substantially overestimate avoided deforestation (by over 65%, based on our estimates). We also find that deforestation spillovers from protected to unprotected forests are negligible. Our conclusions are robust to potential hidden bias, as well as to changes in modeling assumptions. Our results show that, with appropriate empirical methods, conservation scientists and policy makers can better understand the relationships between human and natural systems and can use this to guide their attempts to protect critical ecosystem services.  2008 by The National Academy of Sciences of the USA.;,citation_author=Kwaw S. Andam;,citation_author=Paul J. Ferraro;,citation_author=Alexander Pfaff;,citation_author=G. Arturo Sanchez-Azofeifa;,citation_author=Juan A. Robalino;,citation_publication_date=2008;,citation_cover_date=2008;,citation_year=2008;,citation_issue=42;,citation_doi=10.1073/pnas.0800437105;,citation_issn=00278424;,citation_pmid=18854414;,citation_volume=105;,citation_journal_title=Proceedings of the National Academy of Sciences;">
 <meta name="citation_reference" content="citation_title=An Introduction to Recursive Partitioning for Heterogeneous Causal Effects Estimation Using causalTree package;,citation_author=Susan Athey;,citation_publication_date=2016;,citation_cover_date=2016;,citation_year=2016;">
 <meta name="citation_reference" content="citation_title=The changing risk and burden of wildfire in the United States;,citation_abstract=Recent dramatic and deadly increases in global wildfire activity have increased attention on the causes of wildfires, their consequences, and how risk from wildfire might be mitigated. Here we bring together data on the changing risk and societal burden of wildfire in the United States. We estimate that nearly 50 million homes are currently in the wildland-urban interface in the United States, a number increasing by 1 million houses every 3 y. To illustrate how changes in wildfire activity might affect air pollution and related health outcomes, and how these linkages might guide future science and policy, we develop a statistical model that relates satellite-based fire and smoke data to information from pollution monitoring stations. Using the model, we estimate that wildfires have accounted for up to 25% of PM2.5 (particulate matter with diameter &amp;amp;amp;lt;2.5 $\mu$m) in recent years across the United States, and up to half in some Western regions, with spatial patterns in ambient smoke exposure that do not follow traditional socioeconomic pollution exposure gradients. We combine the model with stylized scenarios to show that fuel management interventions could have large health benefits and that future health impacts from climate-change-induced wildfire smoke could approach projected overall increases in temperature-related mortality from climate change-but that both estimates remain uncertain. We use model results to highlight important areas for future research and to draw lessons for policy.;,citation_author=Marshall Burke;,citation_author=Anne Driscoll;,citation_author=Sam Heft-Neal;,citation_author=Jiani Xue;,citation_author=Jennifer Burney;,citation_author=Michael Wara;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_issue=2;,citation_doi=10.1073/PNAS.2011048118;,citation_issn=10916490;,citation_pmid=33431571;,citation_volume=118;,citation_journal_title=Proceedings of the National Academy of Sciences of the United States of America;">
+<meta name="citation_reference" content="citation_title=Large sample properties of matching estimators for average treatment effects;,citation_abstract=Matching estimators for average treatment effects are widely used in evaluation research despite the fact that their large sample properties have not been established in many cases. The absence of formal results in this area may be partly due to the fact that standard asymptotic expansions do not apply to matching estimators with a fixed number of matches because such estimators are highly nonsmooth functionals of the data. In this article we develop new methods for analyzing the large sample properties of matching estimators and establish a number of new results. We focus on matching with replacement with a fixed number of matches. First, we show that matching estimators are not N 1/2-consistent in general and describe conditions under which matching estimators do attain N 1/2-consistency. Second, we show that even in settings where matching estimators are N 1/2-consistent, simple matching estimators with a fixed number of matches do not attain the semiparametric efficiency bound. Third, we provide a consistent estimator for the large sample variance that does not require consistent nonparametric estimation of unknown functions. Software for implementing these methods is available in Matlab, Stata, and R.  The Econometric Society 2006.;,citation_author=Alberto Abadie;,citation_author=Guido W. Imbens;,citation_publication_date=2006;,citation_cover_date=2006;,citation_year=2006;,citation_issue=1;,citation_doi=10.1111/j.1468-0262.2006.00655.x;,citation_issn=00129682;,citation_volume=74;,citation_journal_title=Econometrica;">
 <meta name="citation_reference" content="citation_title=Estimation and Inference of Heterogeneous Treatment Effects using Random Forests;,citation_abstract=Many scientific and engineering challenges—ranging from personalized medicine to customized marketing recommendations—require an understanding of treatment effect heterogeneity. In this article, we develop a nonparametric causal forest for estimating heterogeneous treatment effects that extends Breiman’s widely used random forest algorithm. In the potential outcomes framework with unconfoundedness, we show that causal forests are pointwise consistent for the true treatment effect and have an asymptotically Gaussian and centered sampling distribution. We also discuss a practical method for constructing asymptotic confidence intervals for the true treatment effect that are centered at the causal forest estimates. Our theoretical results rely on a generic Gaussian theory for a large family of random forest algorithms. To our knowledge, this is the first set of results that allows any type of random forest, including classification and regression forests, to be used for provably valid statistical inference. In experiments, we find causal forests to be substantially more powerful than classical methods based on nearest-neighbor matching, especially in the presence of irrelevant covariates.;,citation_author=Stefan Wager;,citation_author=Susan Athey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.1080/01621459.2017.1319839;,citation_issue=523;,citation_doi=10.1080/01621459.2017.1319839;,citation_issn=1537274X;,citation_volume=113;,citation_journal_title=Journal of the American Statistical Association;,citation_publisher=Taylor &amp;amp;amp; Francis;">
 <meta name="citation_reference" content="citation_title=Biased Random Forest for Dealing with the Class Imbalance Problem;,citation_abstract=The class imbalance issue has been a persistent problem in machine learning that hinders the accurate predictive analysis of data in many real-world applications. The class imbalance problem exists when the number of instances present in a class (or classes) is significantly fewer than the number of instances belonging to another class (or classes). Sufficiently recognizing the minority class during classification is a problem as most algorithms employed to learn from data input are biased toward the majority class. The underlying issue is made more complex with the presence of data difficult factors embedded in such data input. This paper presents a novel and effective ensemble-based method for dealing with the class imbalance problem. This paper is motivated by the idea of moving the oversampling from the data level to the algorithm level, instead of increasing the minority instances in the data sets, the algorithms in this paper aims to ’oversample the classification ensemble’ by increasing the number of classifiers that represent the minority class in the ensemble, i.e., random forest. The proposed biased random forest algorithm employs the nearest neighbor algorithm to identify the critical areas in a given data set. The standard random forest is then fed with more random trees generated based on the critical areas. The results show that the proposed algorithm is very effective in dealing with the class imbalance problem.;,citation_author=Mohammed Bader-El-Den;,citation_author=Eleman Teitei;,citation_author=Todd Perry;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_issue=7;,citation_doi=10.1109/TNNLS.2018.2878400;,citation_issn=21622388;,citation_pmid=30475733;,citation_volume=30;,citation_journal_title=IEEE Transactions on Neural Networks and Learning Systems;,citation_publisher=IEEE;">
 <meta name="citation_reference" content="citation_title=Methamphetamine use and HIV risk behavior among men who inject drugs: Causal inference using coarsened exact matching;,citation_abstract=Background: Understanding the association between methamphetamine (MA) use and HIV risk behavior among people who inject drugs (PWID) will assist policy-makers and program managers to sharpen the focus of HIV prevention interventions. This study examines the relationship between MA use and HIV risk behavior among men who inject drugs (MWID) in Tehran, Iran, using coarsened exact matching (CEM). Methods: Data for these analyses were derived from a cross-sectional study conducted between June and July 2016. We assessed three outcomes of interest - all treated as binary variables, including distributive and receptive needle and syringe (NS) sharing and condomless sex during the month before interview. Our primary exposure of interest was whether study participants reported any MA use in the month prior to the interview. Firstly, we report the descriptive statistics for the pooled samples and matched sub-samples using CEM. The pooled and matched estimates of the associations and their 95% CI were estimated using a logistic regression model. Results: Overall, 500 MWID aged between 18 and 63 years (mean = 28.44, SD = 7.22) were recruited. Imbalances in the measured demographic characteristics and risk behaviors between MA users and non-users were attenuated using matching. In the matched samples, the regression models showed participants who reported MA use were 1.82 times more likely to report condomless sex (OR = 1.82 95% CI 1.51, 4.10; P = 0.031), and 1.35 times more likely to report distributive NS sharing in the past 30 days, as compared to MA non-users (OR = 1.35 95% CI 1.15-1.81). Finally, there was a statistically significant relationship between MA use and receptive NS sharing in the past month. People who use MA in the last month had higher odds of receptive NS sharing when compared to MA non-users (OR = 4.2 95% CI 2.7, 7.5; P = 0.013). Conclusions: Our results show a significant relationship between MA use and HIV risk behavior among MWID in Tehran, Iran. MA use was related with increased NS sharing, which is associated with higher risk for HIV exposure and transmission.;,citation_author=Mehdi Noroozi;,citation_author=Peter Higgs;,citation_author=Alireza Noroozi;,citation_author=Bahram Armoon;,citation_author=Bentolhoda Mousavi;,citation_author=Rosa Alikhani;,citation_author=Mohammad Rafi Bazrafshan;,citation_author=Ali Nazeri Astaneh;,citation_author=Azadeh Bayani;,citation_author=Ladan Fattah Moghaddam;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_issue=66;,citation_doi=10.1186/s12954-020-00411-1;,citation_issn=14777517;,citation_pmid=32957982;,citation_volume=17;,citation_journal_title=Harm Reduction Journal;,citation_publisher=Harm Reduction Journal;">
@@ -323,7 +326,7 @@ window.Quarto = {
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/mitchellcameron123/ML-PS.git" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="../Machine-Learning-and-the-Propensity-Score.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=|url|" title="Facebook" class="quarto-navigation-tool px-1" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -376,12 +379,23 @@ window.Quarto = {
  <span class="menu-text">References</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/appendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Appendix {.appendix}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -406,7 +420,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#sec-mlps-sims" id="toc-sec-mlps-sims" class="nav-link" data-scroll-target="#sec-mlps-sims"><span class="header-section-number">2.3</span> Comparison of Machine Learning Algorithms: Simulation Results</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/pscore_theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/pscore_theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mitchellcameron123/ML-PS.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -555,7 +569,7 @@ Note&nbsp;2.5: Class Imbalance and Machine Learning
 </div>
 </div>
 <p>Individually, a low <span class="math inline">\(mtry\)</span> can lead to unstable probability predictions and class imbalance can create bias towards the majority class. But probability machines are particularly effected when there is both a low <span class="math inline">\(mtry\)</span> <em>and</em> class imbalance. Because successive noisy splits (relating to a low <span class="math inline">\(mtry\)</span>) result in impure child nodes, the effects of majority class bias are exaggerated. Without the ability to separate the classes, the majority class will dominate terminal nodes. If the ensemble was able to split on informative covariates each time (<span class="math inline">\(mtry\)</span> is higher), then it should still be able to create pure splits even when there is some class imbalance. In other words, if there is a small class imbalance, reducing <span class="math inline">\(mtry\)</span> may reveal majority class bias not visible at higher <span class="math inline">\(mtry\)</span>’s. Equally, if there is low <span class="math inline">\(mtry\)</span>, then even a small class imbalance can lead to majority class bias.</p>
-<p>To exemplify these theoretical points, the National Supported Work (NSW) programme is a commonly discussed dataset in causal inference. The data results from a randomized controlled trial with <span class="math inline">\(445\)</span> total participants, <span class="math inline">\(185\)</span> in the program group, and <span class="math inline">\(260\)</span> in the control group, so the true probability of treatment for each individual can be calculated as <span class="math inline">\(185/445=0.42\)</span> or <span class="math inline">\(42\%\)</span>. Thus, the “best” calibrated probability estimates will be close too <span class="math inline">\(42\%\)</span> for all observations. Further information about this data is found in <a href="appendix.html#sec-data-nsw-jobs" class="quarto-xref"><span>Section 6.1.1</span></a>.</p>
+<p>To exemplify these theoretical points, the National Supported Work (NSW) programme is a commonly discussed dataset in causal inference. The data results from a randomized controlled trial with <span class="math inline">\(445\)</span> total participants, <span class="math inline">\(185\)</span> in the program group, and <span class="math inline">\(260\)</span> in the control group, so the true probability of treatment for each individual can be calculated as <span class="math inline">\(185/445=0.42\)</span> or <span class="math inline">\(42\%\)</span>. Thus, the “best” calibrated probability estimates will be close too <span class="math inline">\(42\%\)</span> for all observations. Further information about this data is found in <span class="quarto-unresolved-ref">?sec-data-nsw-jobs</span>.</p>
 <p>Randomisation should ensure that the probability of treatment is independent of the predictors and so all predictors should be noisy or weak. Although <a href="#fig-rf-varimp" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> and <a href="implimentation_workflow.html#tbl-combined-btab" class="quarto-xref">Table&nbsp;<span>3.1</span></a> suggest some covariates do have a greater impact on the probability of participating in the programme, which echoes research by <span class="citation" data-cites="Smith2005">Smith and Todd (<a href="references.html#ref-Smith2005" role="doc-biblioref">2005</a>)</span> who suggests that self-selection bias is evident in the NSW data.</p>
 <p><a href="#fig-rf-theory-demo" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> shows both divergence bias and majority class bias using <code>randomForest()</code> to fit both the random forest and bagging ensemble. Recall that a bagging ensemble is a random forest model when <span class="math inline">\(mtry\)</span> is equal to the number of predictors and so specifying <code>mtry = 7</code> in the <code>randomForest()</code> function fits a bagging ensemble. Additionally, logistic regression using the <code>gbm()</code> function provides a meaningful comparison.</p>
 <div class="cell">
@@ -992,6 +1006,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1806,7 +1964,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/pscore_theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/pscore_theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mitchellcameron123/ML-PS.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
