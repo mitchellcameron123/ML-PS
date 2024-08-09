@@ -459,16 +459,16 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"`experience`"</span>, <span class="st">"`logtotal_land`"</span>, <span class="st">"`access_credit`"</span>,  </span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"`badweat`"</span>, <span class="st">"`nf_income`"</span>),</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Description =</span> <span class="fu">c</span>(<span class="st">"Average income earned per person within a farming household"</span>, </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"If the farming household is certified (=1) or otherwise (=0)"</span>, </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"If the farming household is certified (1) or otherwise (0)"</span>, </span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Age of the head of the household in years"</span>, </span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Age of the head of the household squared"</span>, </span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Gender of the head of household (male = 1 and female = 0)"</span>, </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Household members below 14 and above 65 years divided by rest of the household member"</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Ratio of adult to childern in household (14 years or less)"</span>,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Education of the head of household in years"</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Years of experience in coffee farming"</span>,</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Logarithm of total land size in hectares"</span>,</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Household has access to credit (yes = 1, otherwise = 0)"</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"If the household was affected by floods/droughts during the last year (2008–2009)"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"If the household experienced floods/droughts in 2008–2009"</span>,</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"If the household has access to nonfarm income"</span>)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
@@ -491,9 +491,9 @@ Table&nbsp;4.1: List of covaraites in <span class="citation" data-cites="Jena201
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 12%">
-<col style="width: 62%">
+<col style="width: 30%">
+<col style="width: 15%">
+<col style="width: 53%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -511,7 +511,7 @@ Table&nbsp;4.1: List of covaraites in <span class="citation" data-cites="Jena201
 <tr class="even">
 <td style="text-align: left;">Certification (Treatment/ Control)</td>
 <td style="text-align: center;"><code>certified</code></td>
-<td style="text-align: center;">If the farming household is certified (=1) or otherwise (=0)</td>
+<td style="text-align: center;">If the farming household is certified (1) or otherwise (0)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Household Age</td>
@@ -531,7 +531,7 @@ Table&nbsp;4.1: List of covaraites in <span class="citation" data-cites="Jena201
 <tr class="even">
 <td style="text-align: left;">Dependency Ratio</td>
 <td style="text-align: center;"><code>depratio</code></td>
-<td style="text-align: center;">Household members below 14 and above 65 years divided by rest of the household member</td>
+<td style="text-align: center;">Ratio of adult to childern in household (14 years or less)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Education Level</td>
@@ -556,7 +556,7 @@ Table&nbsp;4.1: List of covaraites in <span class="citation" data-cites="Jena201
 <tr class="odd">
 <td style="text-align: left;">Bad Weather</td>
 <td style="text-align: center;"><code>badweat</code></td>
-<td style="text-align: center;">If the household was affected by floods/droughts during the last year (2008–2009)</td>
+<td style="text-align: center;">If the household experienced floods/droughts in 2008–2009</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Non-farm Income Access</td>
@@ -961,7 +961,7 @@ Note&nbsp;4.1: Discussion of Tuning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Initially, a tuning grid considering shrinkage values of <span class="math inline">\(0.001,0.005, 0.01, 0.05, 0.1, 0.2, text{ and }0.3\)</span> were considered using <span class="math inline">\(10000\)</span> trees with a depth between <span class="math inline">\(1\)</span> and <span class="math inline">\(5\)</span>. The best tuning performance was found with shrinkage of <span class="math inline">\(0.2\)</span> and <span class="math inline">\(13\)</span> trees which were three splits <span class="math inline">\(2\)</span> deep.</p>
+<p>Initially, a tuning grid considering shrinkage values of <span class="math inline">\(0.001,0.005, 0.01, 0.05, 0.1, 0.2, \text{ and }0.3\)</span> were considered using <span class="math inline">\(10000\)</span> trees with a depth between <span class="math inline">\(1\)</span> and <span class="math inline">\(5\)</span>. The best tuning performance was found with shrinkage of <span class="math inline">\(0.2\)</span> and <span class="math inline">\(13\)</span> trees which were three splits <span class="math inline">\(2\)</span> deep.</p>
 <p>As such my later tuning grids considered higher learning rates and a smaller number of trees. The third and final iteration of the tuning grid searches between <span class="math inline">\(0.15, 0.2125, 0.275, 0.3375, \text{ and }0.4\)</span>, between <span class="math inline">\(3\)</span> and <span class="math inline">\(6\)</span> splits deep, uses an offset, and randomly selects <span class="math inline">\(67\%\)</span> of the data at each tree.</p>
 </div>
 </div>
@@ -2078,16 +2078,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="in">                "`experience`", "`logtotal_land`", "`access_credit`",  </span></span>
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="in">                "`badweat`", "`nf_income`"),</span></span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="in">  Description = c("Average income earned per person within a farming household", </span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="in">                  "If the farming household is certified (=1) or otherwise (=0)", </span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="in">                  "If the farming household is certified (1) or otherwise (0)", </span></span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Age of the head of the household in years", </span></span>
 <span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Age of the head of the household squared", </span></span>
 <span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Gender of the head of household (male = 1 and female = 0)", </span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Household members below 14 and above 65 years divided by rest of the household member", </span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Ratio of adult to childern in household (14 years or less)",</span></span>
 <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Education of the head of household in years",</span></span>
 <span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Years of experience in coffee farming",</span></span>
 <span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Logarithm of total land size in hectares",</span></span>
 <span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="in">                  "Household has access to credit (yes = 1, otherwise = 0)",</span></span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="in">                  "If the household was affected by floods/droughts during the last year (2008–2009)",</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="in">                  "If the household experienced floods/droughts in 2008–2009",</span></span>
 <span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="in">                  "If the household has access to nonfarm income")</span></span>
 <span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
@@ -2314,7 +2314,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-272"><a href="#cb12-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb12-273"><a href="#cb12-273" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-274"><a href="#cb12-274" aria-hidden="true" tabindex="-1"></a>::: {#nte-tuning .callout-note title="Discussion of Tuning"}</span>
-<span id="cb12-275"><a href="#cb12-275" aria-hidden="true" tabindex="-1"></a>Initially, a tuning grid considering shrinkage values of $0.001,0.005, 0.01, 0.05, 0.1, 0.2, text{ and }0.3$ were considered using $10000$ trees with a depth between $1$ and $5$. The best tuning performance was found with shrinkage of $0.2$ and $13$ trees which were three splits $2$ deep. </span>
+<span id="cb12-275"><a href="#cb12-275" aria-hidden="true" tabindex="-1"></a>Initially, a tuning grid considering shrinkage values of $0.001,0.005, 0.01, 0.05, 0.1, 0.2, \text{ and }0.3$ were considered using $10000$ trees with a depth between $1$ and $5$. The best tuning performance was found with shrinkage of $0.2$ and $13$ trees which were three splits $2$ deep. </span>
 <span id="cb12-276"><a href="#cb12-276" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-277"><a href="#cb12-277" aria-hidden="true" tabindex="-1"></a>As such my later tuning grids considered higher learning rates and a smaller number of trees. The third and final iteration of the tuning grid searches between $0.15, 0.2125, 0.275, 0.3375, \text{ and }0.4$, between $3$ and $6$ splits deep, uses an offset, and randomly selects $67\%$ of the data at each tree.</span>
 <span id="cb12-278"><a href="#cb12-278" aria-hidden="true" tabindex="-1"></a>:::</span>
@@ -2494,7 +2494,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/coffee_replication.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mitchellcameron123/ML-PS.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mitchellcameron123/ML-PS.git/edit/main/chapters/coffee_replication.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mitchellcameron123/ML-PS.git/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
